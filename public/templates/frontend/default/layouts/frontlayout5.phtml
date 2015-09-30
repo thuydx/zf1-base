@@ -1,0 +1,677 @@
+<?php
+/**
+ * WDS Project - WDS
+ * @name frontlayout
+ * @package templates/front/blue
+ * @author Thuy Dinh Xuan
+ * @version $1.0.1$
+ * 12:33:19 AM - Aug 14, 2010
+ * License http://wds.vn/license
+ */
+$this->css()->prepend('styles.css');
+$this->css()->prepend('styles_nav.css');
+$this->css()->prepend('reset.css');
+$this->css()->prepend('navbar.css');
+$this->css()->prepend('960.css');
+
+$this->js()->append('jquery-1.5.2.js');
+$this->js()->append('jquery.hoverIntent.js');
+$this->js()->append('jquery.metadata.js');
+$this->js()->append('maps.js');
+$this->js()->append('FixPng.js');
+$this->js()->append('mbMenu.js');
+$this->js()->append('script.js');
+$this->js()->append('styleswitch.js');
+ 
+?>
+<!doctype html>  
+
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> 
+<html lang="en"> 
+<!--<![endif]-->
+<head>
+    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="Keywords" content="wds.vn,Php,Zend Framework,Zend Framework information,Zend Framework practice" />
+    <meta name="Description" content="wds.vn is the place in which sharing the lastest news and tech. in php and zend framework" />
+    <meta name="Author" content="master@wds.vn">
+    <meta name="Copyright" content="WDS GROUP &copy; All Rights Reserved">
+    <meta name="Generator" content="Zend Framework 1.10.0">
+    <meta name="Accept-Encoding" content="gzip,deflate">
+    <meta name="Content-Encoding" content="gzip">
+	<meta name="robots" content="index, follow" />
+  <!--  Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+  <link rel="shortcut icon" href="<?php echo $this->baseUrl('images/icons/favicon.ico')?>">
+  <link rel="apple-touch-icon" href="<?php echo $this->baseUrl('images/icons/apple-touch-icon.png')?>">
+
+
+  <!-- CSS : implied media="all" -->
+  <link rel="stylesheet" href="<?php echo $this->baseUrl('css/style.css?v=2')?>" type="text/css" media="all">
+  <!-- Uncomment if you are specifically targeting less enabled mobile browsers
+  <link rel="stylesheet" media="handheld" href="css/handheld.css?v=2">  -->
+ 
+  <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
+  <script src="<?php echo $this->baseUrl('clientscripts/libs/modernizr-1.6.min.js')?>"></script>
+
+<?php 
+    echo $this->css();
+    echo $this->js();
+?>
+     <script type="text/javascript">
+        $(document).ready(function() {
+            $('span.Tab').click(function(){
+                $('.active').removeClass('active');
+                $(this).addClass('active');
+                $('.TabContent').slideUp();
+                var content_show = $(this).attr('title');
+                $('#'+ content_show).slideDown();
+            });
+        });
+ 		$(document).ready(function() {
+            $('span.TabRightLevel1').click(function(){
+                $('.active').removeClass('active');
+                $(this).addClass('active');
+                $('.TabContentRightLevel1').slideUp();
+                var content_show = $(this).attr('title');
+                $('#'+ content_show).slideDown();
+            });
+        });		
+     </script>
+     
+
+
+<script type="text/javascript">
+
+  /*
+   * DEFAULT OPTIONS
+   *
+   options: {
+   template:"yourMenuVoiceTemplate",--> the url that returns the menu voices via ajax. the data passed in the request is the "menu" attribute value as "menuId"
+   additionalData:"",								--> if you need additional data to pass to the ajax call
+   menuSelector:".menuContainer",		--> the css class for the menu container
+   menuWidth:150,										--> min menu width
+   openOnRight:false,								--> if the menu has to open on the right insted of bottom
+   iconPath:"ico/",									--> the path for the icons on the left of the menu voice
+   hasImages:true,									--> if the menuvoices have an icon (a space on the left is added for the icon)
+   fadeInTime:100,									--> time in milliseconds to fade in the menu once you roll over the root voice
+   fadeOutTime:200,									--> time in milliseconds to fade out the menu once you close the menu
+   menuTop:0,												--> top space from the menu voice caller
+   menuLeft:0,											--> left space from the menu voice caller
+   submenuTop:0,										--> top space from the submenu voice caller
+   submenuLeft:4,										--> left space from the submenu voice caller
+   opacity:1,												--> opacity of the menu
+   shadow:false,										--> if the menu has a shadow
+   shadowColor:"black",							--> the color of the shadow
+   shadowOpacity:.2,								--> the opacity of the shadow
+   openOnClick:true,								--> if the menu has to be opened by a click event (otherwise is opened by a hover event)
+   closeOnMouseOut:false,						--> if the menu has to be cloesed on mouse out
+   closeAfter:500,									--> time in millisecond to whait befor closing menu once you mouse out
+   minZindex:"auto", 								--> if set to "auto" the zIndex is automatically evaluate, otherwise it start from your settings ("auto" or int)
+   hoverInted:0, 										--> if you use jquery.hoverinted.js set this to time in milliseconds to delay the hover event (0= false)
+   onContextualMenu:function(o,e){} --> a function invoked once you call a contextual menu; it pass o (the menu you clicked on) and e (the event)
+   },
+   */
+
+  $(function(){
+    $(".myMenu").buildMenu(
+    {
+      template:"menuVoices.html",
+      additionalData:"pippo=1",
+      menuWidth:200,
+      openOnRight:false,
+      menuSelector: ".menuContainer",
+      iconPath:"ico/",
+      hasImages:true,
+      fadeInTime:100,
+      fadeOutTime:300,
+      adjustLeft:2,
+      minZindex:"auto",
+      adjustTop:10,
+      opacity:.95,
+      shadow:false,
+      shadowColor:"ccc",
+      hoverIntent:0,
+      openOnClick:false,
+      closeOnMouseOut:false,
+      closeAfter:1000,
+      submenuHoverIntent:200
+    });
+/*
+    $(".vertMenu").buildMenu(
+    {
+      template:"menuVoices.html",
+      menuWidth:170,
+      openOnRight:true,
+      menuSelector: ".menuContainer",
+      iconPath:"ico/",
+      hasImages:true,
+      fadeInTime:200,
+      fadeOutTime:200,
+      adjustLeft:0,
+      adjustTop:0,
+      opacity:.95,
+      openOnClick:false,
+      minZindex:200,
+      shadow:false,
+      hoverIntent:300,
+      submenuHoverIntent:300,
+      closeOnMouseOut:true
+    });
+*/
+    $(document).buildContextualMenu(
+    {
+      template:"menuVoices.html",
+      menuWidth:200,
+      overflow:2,
+      menuSelector: ".menuContainer",
+      iconPath:"ico/",
+      hasImages:false,
+      fadeInTime:100,
+      fadeOutTime:100,
+      adjustLeft:0,
+      adjustTop:0,
+      opacity:.99,
+      closeOnMouseOut:false,
+      onContextualMenu:function(o,e){}, //params: o = the contextual menu,e = the event
+      shadow:false
+    });
+  });
+
+  //this function get the id of the element that fires the context menu.
+/*
+  function testForContextMenu(el){
+    if (!el) el= $.mbMenu.lastContextMenuEl;
+    alert("the ID of the element is:   "+$(el).attr("id"));
+  }
+
+  function recallcMenu(el){
+    if (!el) el= $.mbMenu.lastContextMenuEl;
+    var cmenu=+$(el).attr("cmenu");
+    $(cmenu).remove();
+  }
+
+  function loadFlash(){
+    $.ajax({
+      url:"testFlash/test.html",
+      success:function(html){
+        $("flashTest").html(html);
+      }
+    });
+  }
+
+  function showMessage(msg){
+    var msgBox=$("<div>").addClass("msgBox");
+    $("body").append(msgBox);
+    msgBox.append("You click on: <br>"+msg);
+    setTimeout(function(){msgBox.fadeOut(500,function(){msgBox.remove();})},3000)
+  }
+*/   
+</script> 
+</head>
+<body>
+<?php echo $this->render('header.phtml'); ?>
+        <div id="container" class="wrapper">
+        	<section id="alert">
+				<div class="alert_title">Special Alert</div>
+                <div class="alert_text">
+					<img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/l_alert.jpg" alt="alert" class="alert_l" />
+					Demo Alert Text
+					<img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/r_alert.jpg" alt="alert" class="alert_r" />
+				</div>
+            </section>
+            <div id="content">
+           		<aside id="stat_midle">
+					<div id="midle">
+    					<section class="list_article">
+                            <h3 class="artice_title">Stocks in Detail</h3>
+                           <h4>Article Headline goes here</h4>
+                           <p>
+                            <span class="date">24 Jan 10 |</span>                        
+                                Lorem ipsum dolor sit amet, conse ctetuer adipiscing elit. 
+                                Praesent aliquam,  justo convallis luctus rutrum, erat nulla fermentum diam.                        
+                            </p> 
+                            <div class="clearfix"></div>                      
+                        </section>
+                        <section class="list_article">
+                            <h3 class="artice_title">Stocks in Detail</h3>
+                           <h4>Article Headline goes here</h4>
+                           <p>
+                            <span class="date">24 Jan 10 |</span>                        
+                                Lorem ipsum dolor sit amet, conse ctetuer adipiscing elit. 
+                                Praesent aliquam,  justo convallis luctus rutrum, erat nulla fermentum diam.                        
+                            </p> 
+                            <div class="clearfix"></div>
+                        </section>
+                        <section class="list_article">
+                            <h3 class="artice_title">Stocks in Detail</h3>
+                           <h4>Article Headline goes here</h4>
+                           <p>
+                            <span class="date">24 Jan 10 |</span>                        
+                                Lorem ipsum dolor sit amet, conse ctetuer adipiscing elit. 
+                                Praesent aliquam,  justo convallis luctus rutrum, erat nulla fermentum diam.                        
+                            </p> 
+                            <div class="clearfix"></div>
+                        </section>
+                        <section class="list_article">
+                            <h3 class="artice_title">Stocks in Detail</h3>
+                           <h4>Article Headline goes here</h4>
+                           <p>
+                            <span class="date">24 Jan 10 |</span>                        
+                                Lorem ipsum dolor sit amet, conse ctetuer adipiscing elit. 
+                                Praesent aliquam,  justo convallis luctus rutrum, erat nulla fermentum diam.                        
+                            </p> 
+                            <div class="clearfix"></div>
+                        </section>
+                        <section class="list_article">
+                            <ul>
+                                <li><a href="#">An unordered list</a></li>
+                                <li><a href="#">An unordered list</a></li>
+                           </ul>
+                        </section>                    
+                    </div> <!-- End midle -->
+				</aside> <!-- End stat_midle -->
+                 <?php echo $this->layout()->content; ?>
+				<aside id="stat_left">
+					<section class="left_slide">
+                        <div id="gallery">
+                        
+                            <div id="slides">
+                            
+                                <div class="slide"><img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/Slides/photo/macbook.jpg" width="246" height="200" alt="side" /></div>
+                                <div class="slide"><img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/Slides/photo/iphone.jpg" width="246" height="200" alt="side" /></div>
+                                <div class="slide"><img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/Slides/photo/imac.jpg" width="246" height="200" alt="side" /></div>
+                                <div class="slide"><a href="#" target="_blank"><img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/Slides/photo/info.jpg" width="246" height="200" alt="side" /></a></div>
+                                
+                            </div>
+                                
+                            <div id="menu">
+                                
+                                <ul>
+                                <li class="fbar">&nbsp;</li>
+                                <li class="menuItem"><a href=""><img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/Slides/photo/thumb_macbook.png" alt="thumbnail" /></a></li>
+                                <li class="menuItem"><a href=""><img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/Slides/photo/thumb_iphone.png" alt="thumbnail" /></a></li>
+                                <li class="menuItem"><a href=""><img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/Slides/photo/thumb_imac.png" alt="thumbnail" /></a></li>
+                                <li class="menuItem"><a href=""><img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/Slides/photo/thumb_about.png" alt="thumbnail" /></a></li>
+                                </ul>
+                            
+                            
+                            </div>
+                        
+                        </div>
+					</section>
+					<!-- Start Tabeb Left Menu -->
+					<div id="TabbedNav" class="TabbedNav">                        
+                        <div class="TabbedArea">
+                            <ul class="Tabs">
+                                <li><span title='featured' class="active Tab">Featured</span></li>
+                                <li><span title='news' class="Tab">News</span></li>
+                               <!-- <li><a href="#" title='popular' class="tab">Popular</a></li> -->
+                            </ul>
+                            <div id="featured" class="TabContent">
+                                <ul>  
+                                    <li><a href="#">Justo convallis luctus rutrum, erat nulla </a></li>  
+                                    <li><a href="#">Germentum diam, at nonummy quam  ante ac </a></li>                                  
+                                    <li><a href="#">Wuam. Maecenas urna purus, fermentum id, </a></li>                                   
+                                    <li><a href="#">Molestie in, commodo  porttitor</a></li>
+                                    <li><a href="#">Molestie in, commodo  porttitor</a></li>                                     
+                                </ul>  
+                            
+                            </div>
+                            <div id="news" class="TabContent">
+                                <ul>  
+                                    <li><a href="#">Justo convallis luctus rutrum, erat nulla </a></li>  
+                                    <li><a href="#">Germentum diam, at nonummy quam  ante ac </a></li>                                  
+                                    <li><a href="#">Wuam. Maecenas urna purus, fermentum id, </a></li>                                  
+                                    <li><a href="#">Molestie in, commodo  porttitor</a></li>          
+                                </ul>                         
+                            </div>
+                            <!--
+                            <div id="popular" class="content">
+                                <ul id="nav">
+                                   <li><a href="#">Home</a></li>
+                                   <li><a href="#">About</a></li>
+                                   <li><a href="#">Clients</a></li>
+                                   <li><a href="#">Contact Us</a></li>
+                                </ul>        
+                            </div>
+                            -->
+                            <div class="js_readmore">
+                                <a href="#">More</a>
+                            </div>
+                        </div><!--end .tabbed_area-->    
+                        
+                    </div><!--End tabbed_nav-->		
+                    <!-- End Tabeb Left Menu -->			
+				</aside>
+                
+				
+                
+                <aside id="stat_right">
+					<div class="ja_renew">
+                        <h2>Membership Renewal</h2>
+                        <img align="right" src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/bt_renew.png" alt="" class="right"/>
+                        <p>
+                            Lorem ipsum dolor sit amet, conse ctetuer adipiscing elit.
+                        </p>                       
+                    </div>
+                    <div class="ja-social-list">
+                        <a href="#">Follow us on:</a>
+                        <a title="facebook" href="#"><img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/icon_fb.png" alt=""/>Facebook</a>
+                        <a title="twitter" href="#"><img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/icon_tw.png" alt=""/>Twitter</a>
+                        <a title="rss" href="#"><img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/icon_rss.png" alt=""/>RSS</a>                        
+                    </div>
+				</aside> 
+				<div class="clearfix"></div>
+				
+            </div> <!-- End #content -->
+            <div id="products">     
+                <div class="product_items">
+                    <div class="product_img">
+                        <a href="#"><img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/pic1.png" alt=""/></a>
+                    </div>      
+                    <span>Announcement:</span><br>                                                               
+                    <a href="#">Title of goes here (328kb)</a>
+                </div>    
+                <div class="product_items">
+                    <div class="product_img">
+                        <a href="#"><img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/pic2.png" alt=""/></a>
+                    </div>     
+                    <span>Announcement:</span><br>                                                                
+                    <a href="#">Title of goes here (328kb)</a>
+                </div>    
+                <div class="product_items">
+                    <div class="product_img">
+                        <a href="#"><img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/pic3.png" alt=""/></a>
+                    </div>                               
+                    <span>Announcement:</span><br>                                      
+                    <a href="#">Title of goes here (328kb)</a>
+                </div>    
+                <div class="product_items">
+                    <div class="product_img">
+                        <a href="#"><img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/pic4.png" alt=""/></a>
+                    </div>          
+                    <span>Announcement:</span><br>                                                           
+                    <a href="#">Title of goes here (328kb)</a>
+                </div>    
+                <div class="product_items">
+                    <div class="product_img">
+                        <a href="#"><img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/pic5.png" alt=""/></a>
+                    </div>      
+                    <span>Announcement:</span><br>                                                               
+                    <a href="#">Title of goes here (328kb)</a>
+                </div>    
+            </div><!-- End #home -->
+            <section class="ContentLeftBox">
+				<aside class="ContentLeft">
+                	<header class="article_header"> 
+                        <ul>
+                            <li class="first"><a href="#">Stock Research</a></li>
+                            <li><a href="#">Blue Chips</a></li>
+                            <li><a href="#">Second Line</a></li>
+                            <li class="last"><a href="#">Speculative</a></li>                    
+                        </ul>
+                    </header>
+                    <article class="ContentLeftDetail">
+                        <div class="ContentLeftDetailList">
+	                        <div class="ContentLeftDetailLv2">
+                                <div class="main_img">
+                                    <a href="#"><img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/img1.png" alt=""/></a>
+                                </div>
+                                <div class="main_intro">
+                                	<h2 class="title"><a href="#">BHP gets a bullet</a></h2>
+                                    <span class="date">18 JAN 10 |</span> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
+                                    Praesent aliquam,  justo convallis luctus rutrum, erat nulla fermentum diam, at nonummy .                        
+                                </div>
+                                <ul>
+                                    <li><a href="#"><span class="date">18 JAN 10 |</span>  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </a></li>
+                                    <li><a href="#"><span class="date">18 JAN 10 |</span>  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </a></li>
+                                    <li><a href="#"><span class="date">18 JAN 10 |</span>  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </a></li>
+                                </ul>
+	                        </div>        
+                        </div><!-- End .stock -->
+                        <div class="ContentLeftDetailSummary">
+                           <img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/demo/video_demo1.jpg" alt="video1" />
+                        </div><!-- End .video -->
+                    </article> <!-- End .ContentLeftDetail -->  
+                    
+                </aside> <!-- End .ContentLeft -->
+                <aside class="SideBar">
+                	<div class="SideBarInside">
+                    	<header class="SideBarHeader">
+                        	Featured Articles <span class="more"> <a href="#">  More </a></span>
+                        </header>
+						<article class="SideBarList">
+							<ul>
+                                <li><a href="#"><span class="date">18 JAN 10 |</span>  Lorem ipsum dolor sit amet</a></li>
+                                <li><a href="#"><span class="date">18 JAN 10 |</span>  Praesent aliquam,  justo convallis luctus</a></li>
+                                <li><a href="#"><span class="date">18 JAN 10 |</span>  Fermentum diam, at nonummy quam</a></li>
+                                <li><a href="#"><span class="date">18 JAN 10 |</span>  Maecenas urna purus, fermentum id</a></li>
+                                <li><a href="#"><span class="date">18 JAN 10 |</span>  Commodo  porttitor, felis. Nam blandit</a></li>
+                            </ul>
+						</article>
+                        <header class="SideBarHeaderLevel2">
+                        	BulletIn Board <span class="more"> <a href="#">  More </a></span>
+                        </header>
+                        <article class="SideBarListLevel2">
+							<ul>
+                                <li><a class="arrow" href="#">  Lorem ipsum dolor sit amet Nam blandit quam</a></li>
+                                <li><a class="arrow" href="#">  Praesent aliquam,  justo convallis luctus</a></li>
+                                <li><a class="arrow" href="#">  Fermentum diam, at nonummy quam  blandit</a></li>
+                            </ul>
+						</article>
+                    </div>
+                </aside>     
+            </section> <!-- End .ContentLeftBox -->
+			          
+ 			<section class="ContentLeftBox">
+				<aside class="ContentLeft">
+                	<header class="article_header"> 
+                    	<ul>
+                            <li class="first"><a href="#">Investors College</a></li>
+                            <li><a href="#">Masterclass</a></li>
+                            <li><a href="#">Psychology</a></li>
+                            <li><a href="#">Valuation</a></li>
+                            <li class="last"><a href="#">Fundamentals</a></li>                    
+                        </ul>
+                    </header>
+                    <article class="ContentLeftDetail">
+                        <div class="ContentLeftDetailList">
+	                        <div class="ContentLeftDetailLv2">
+                                <div class="main_img">
+                                    <a href="#"><img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/img2.png" alt=""/></a>
+                                </div>
+                                <div class="main_intro">
+                                	<h2 class="title"><a href="#">BHP gets a bullet</a></h2>
+                                    <span class="date">18 JAN 10 |</span> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
+                                    Praesent aliquam,  justo convallis luctus rutrum, erat nulla fermentum diam, at nonummy .                        
+                                </div>
+                                <ul>
+                                    <li><a href="#"><span class="date">18 JAN 10 |</span>  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </a></li>
+                                    <li><a href="#"><span class="date">18 JAN 10 |</span>  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </a></li>
+                                    <li><a href="#"><span class="date">18 JAN 10 |</span>  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </a></li>
+                                </ul>
+                            </div>
+                        </div><!-- End .stock -->
+                        <div class="ContentLeftDetailSummary">
+                             <img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/demo/video_demo2.jpg" alt="video2" />
+                        </div><!-- End .video -->
+                    </article><!-- End .ContentLeftDetail -->   
+                </aside> <!-- End .ContentLeft -->
+                <aside class="SideBar">
+					<!-- Start Tabeb Right Menu -->
+					<div id="TabbedNavRightLevel1" class="TabbedNavRightLevel1">                        
+                        <div class="TabbedAreaRightLevel1">
+                            <ul class="TabsRightLevel1">
+                                <li><span title='FeaturedRightLevel1' class="active TabRightLevel1">Featured</span></li>
+                                <li><span title='NewsRightLevel1' class="TabRightLevel1">News</span></li>
+                               	<li><span title='PopularRightLevel1' class="TabRightLevel1">Popular</span></li>
+                            </ul>
+                            <div id="FeaturedRightLevel1" class="TabContentRightLevel1">
+                                <ul>  
+                                    <li><a href="#">Justo convallis luctus rutrum, erat nulla </a></li>  
+                                    <li><a href="#">Germentum diam, at nonummy quam  ante ac </a></li>                                  
+                                    <li><a href="#">Wuam. Maecenas urna purus, fermentum id, </a></li>                                   
+                                    <li><a href="#">Molestie in, commodo  porttitor</a></li>
+                                    <li><a href="#">Molestie in, commodo  porttitor</a></li>                                     
+                                </ul>  
+                            
+                            </div>
+                            <div id="NewsRightLevel1" class="TabContentRightLevel1">
+                                <ul>  
+                                    <li><a href="#">Justo convallis luctus rutrum, erat nulla </a></li>  
+                                    <li><a href="#">Germentum diam, at nonummy quam  ante ac </a></li>                                  
+                                    <li><a href="#">Wuam. Maecenas urna purus, fermentum id, </a></li>                                  
+                                    <li><a href="#">Molestie in, commodo  porttitor</a></li>          
+                                </ul>                         
+                            </div>
+                            
+                            <div id="PopularRightLevel1" class="TabContentRightLevel1">
+                                <ul id="nav">
+                                   <li><a href="#">Home</a></li>
+                                   <li><a href="#">About</a></li>
+                                   <li><a href="#">Clients</a></li>
+                                   <li><a href="#">Contact Us</a></li>
+                                </ul>        
+                            </div>
+                            
+                            <div class="js_readmore">
+                                <a href="#">More</a>
+                            </div>
+                        </div><!--end .tabbed_area-->    
+                        
+                    </div><!--End tabbed_nav-->		
+                    <!-- End Tabeb Right Menu -->	              
+                </aside>                     
+            </section>    <!-- End .ContentLeftBox -->          
+  			<section class="ContentLeftBox">
+				<aside class="ContentLeft">
+                	<header class="article_header"> 
+                    	<ul>
+                            <li class="first"><a href="#">Podcasts & Videos</a></li>
+                            <li><a href="#">Dumb Questions</a></li>
+                            <li><a href="#">Stocktake</a></li>
+                            <li><a href="#">Boss Talk</a></li>
+                            <li class="last"><a href="#">Specials</a></li>                                      
+                        </ul>
+                    </header>
+                    <article class="ContentLeftDetail">
+                    	<div class="ContentLeftDetailList">
+                        	<div class="ContentLeftDetailLv2">
+                                <div class="main_img">
+                                    <a href="#"><img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/img1.png" alt=""/></a>
+                                </div>
+                                <div class="main_intro">
+                                	 <h2 class="title"><a href="#">Reporting season 14 Feb 10</a></h2>
+                                    <span class="date">18 JAN 10 |</span> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
+                                    Praesent aliquam,  justo convallis luctus rutrum, erat nulla fermentum diam, at nonummy .                        
+                                </div>
+                                <ul>
+                                    <li><a href="#"><span class="date">18 JAN 10 |</span>  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </a></li>
+                                    <li><a href="#"><span class="date">18 JAN 10 |</span>  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </a></li>
+                                    <li><a href="#"><span class="date">18 JAN 10 |</span>  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </a></li>
+                                </ul>
+							</div>
+                        </div><!-- End .ContentLeftDetailList -->
+                        <div class="ContentLeftDetailSummary">
+                             <img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/demo/video_demo3.jpg" alt="video3" />
+                        </div><!-- End .video -->
+                    </article><!-- End .maincontent -->       
+                </aside>
+                <aside class="SideBar">
+					<div class="SideBarInside">
+                    	<header class="SideBarHeader">
+                        	Blogs  <span class="more"> <a href="#">  More </a></span>
+                        </header>
+						<article class="SideBarList">
+							<ul>
+                                <li><a href="#"><span class="date">18 JAN 10 |</span>  Lorem ipsum dolor sit amet</a><span class="ViewerCount">(9)</span></li>
+                                <li><a href="#"><span class="date">18 JAN 10 |</span>  Praesent aliquam,  justo convallis luctus</a><span class="ViewerCount">(2)</span></li>
+                                <li><a href="#"><span class="date">18 JAN 10 |</span>  Fermentum diam, at nonummy quam</a><span class="ViewerCount">(11)</span></li>
+                                <li><a href="#"><span class="date">18 JAN 10 |</span>  Maecenas urna purus, fermentum id</a><span class="ViewerCount">(1)</span></li>
+                                <li><a href="#"><span class="date">18 JAN 10 |</span>  Commodo  porttitor, felis. Nam blandit</a><span class="ViewerCount">(32)</span></li>
+                            </ul>
+						</article>
+                        <header class="SideBarHeaderLevel2">
+                        	Latest Comments <span class="more"> <a href="#">  More </a></span>
+                        </header>
+                        <article class="SideBarListLevel2">
+							<ul>
+                                <li><a class="arrow" href="#">  Lorem ipsum dolor sit amet Nam blandit quam</a></li>
+                                <li><a class="arrow" href="#">  Praesent aliquam,  justo convallis luctus</a></li>
+                                <li><a class="arrow" href="#">  Fermentum diam, at nonummy quam  blandit</a></li>
+                            </ul>
+						</article>
+                    </div>
+                </aside>                 
+            </section>                             
+        </div><!-- End #container -->
+		<div class="clear"></div>
+        <?php echo $this->render('footer.phtml'); ?>    
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+ <!-- Javascript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
+  <script src="<?php echo $this->baseUrl('clientscripts/libs/jquery-1.4.3.js'); ?>"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="<?php echo $this->baseUrl('clientscripts/libs/jquery-1.4.3.js'); ?>"%3E%3C/script%3E'))</script>
+  
+  
+  <!-- scripts concatenated and minified via ant build script-->
+  <script src="<?php echo $this->baseUrl('clientscripts/plugins.js'); ?>"></script>
+  <script src="<?php echo $this->baseUrl('clientscripts/script.js'); ?>"></script>
+  <!-- end concatenated and minified scripts-->
+  
+  
+  <!--[if lt IE 7 ]>
+    <script src="<?php echo $this->baseUrl('clientscripts/libs/dd_belatedpng.js'); ?>"></script>
+    <script> DD_belatedPNG.fix('img, .png_bg'); //fix any <img> or .png_bg background-images </script>
+  <![endif]-->
+
+  <!-- yui profiler and profileviewer - remove for production -->
+  <script src="<?php echo $this->baseUrl('clientscripts/profiling/yahoo-profiling.min.js'); ?>"></script>
+  <script src="<?php echo $this->baseUrl('clientscripts/profiling/config.js'); ?>"></script>
+  <!-- end profiling code -->
+
+    <script type="text/javascript">nsp='Old browser!';dl=document.layers;oe=window.opera?1:0;da=document.all&&!oe;ge=document.getElementById;ws=window.sidebar?true:false;tN=navigator.userAgent.toLowerCase();izN=tN.indexOf('netscape')>=0?true:false;zis=tN.indexOf('msie 7')>=0?true:false;zis8=tN.indexOf('msie 8')>=0?true:false;zis|=zis8;if(ws&&!izN){quogl='iuy'};var msg='';function nem(){return true};window.onerror = nem;zOF=window.location.protocol.indexOf("file")!=-1?true:false;i7f=zis&&!zOF?true:false;if(da){document.ondragstart=function (){return false};function cIE(){(msg);return false};function cc(){document.oncontextmenu=cIE;setTimeout("cc()",200)};cc()};function cNS(e){if(dl||ws){if(e.which==2||e.which==3){(msg);return false}}};if(dl){document.captureEvents(Event.MOUSEDOWN);document.onmousedown=cNS}else{document.onmouseup=cNS};document.oncontextmenu=new Function("return false");if(oe){function ro(e){if(event.button==2){alert(' ');return 0};return true};document.onmousedown=ro};if(zis8){window.attachEvent('onload',qy9)};</script>
+
+    
+    
+  <!-- asynchronous google analytics: mathiasbynens.be/notes/async-analytics-snippet 
+       change the UA-XXXXX-X to be your site's ID -->
+  <script>
+   var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
+   (function(d, t) {
+    var g = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+    g.async = true;
+    g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g, s);
+   })(document, 'script');
+  </script>
+</body>
+</html>

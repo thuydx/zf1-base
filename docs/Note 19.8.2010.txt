@@ -1,0 +1,20 @@
+﻿Xây dựng cấu hình ứng dụng Zend Framework 2.0
+
+Xây dựng một cấu trúc files hệ thống với mô hình khuyên dùng của Zend
+http://framework.zend.com/manual/en/project-structure.project.html
+
+Và cấu trúc nhiều modules
+http://framework.zend.com/manual/en/project-structure.filesystem.html
+
+Mặc dù sử dụng cấu 2 cấu trúc trên cùng lúc cũng được. Tuy nhiên khi đó phần front sẽ không thuộc module nào cả.
+Và vì thế sẽ không gọn gàng. Tôi đã xem qua nhiều ứng dụng sử dụng Zend Framework và nhận ra rằng cần thay đổi
+một chút để gọn gàng và dễ quản lý hơn. Đó là đưa toàn bộ phần cấu trúc của front vào trong một module tên là front.
+
+Chúng ta có 2 cách để xây dựng cấu trúc thư mục dành cho multi-templates
+Các 1 là chúng ta sẽ xây dựng cấu trúc thư mục templates nằm trong application. Chỉ có các thành phần images/css/js nằm trong public.
+Điểm lợi của cách này đó là cấu hình tập trung. Dễ cho bảo trì.
+Điểm chưa tốt đó là:
+	- Khó cho các designer phát triển. Vì khi muốn làm một template mới thì họ phải biết/hiểu về source code mới làm được.
+
+Cách thứ 2 là chúng ta xây dựng cấu trúc templates bên ngoài application. Ở đâu là public
+Khi đó cấu trúc file layout sẽ được đưa ra public. Phần script vẫn giữ nguyên trong mỗi modules

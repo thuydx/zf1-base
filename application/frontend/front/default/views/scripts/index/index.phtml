@@ -1,0 +1,10 @@
+
+<?php
+$data = $this->data; 
+foreach ($data as $row) {
+            if ($row instanceof \WDS\Model\Entity\Locale) {                
+                echo $this->link($this->Rurl('language', 'switch', null, array('locale' => $row->getLocaleId())),
+                                             ucfirst($this->language($row->getLocaleName())));
+                echo "<br />";
+            }
+        }

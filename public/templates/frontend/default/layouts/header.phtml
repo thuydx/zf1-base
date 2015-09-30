@@ -1,0 +1,169 @@
+<?php
+/**
+ * WDS GROUP
+ *
+ * @name        header.phtml
+ * @category    WDS
+ * @package        
+ * @subpackage           
+ * @author      Thuy Dinh Xuan <thuydx@wds.vn>
+ * @copyright   Copyright (c)2008-2010 WDS GROUP. All rights reserved
+ * @license     http://wds.vn/license/     WDS Software License
+ * @version     $1.0$
+ * 9:22:33 PM - 2011
+ *
+ * LICENSE
+ *
+ * This source file is copyrighted by WDS GROUP, full details in LICENSE.txt.
+ * It is also available through the Internet at this URL:
+ * http://wds.vn/license/
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the Internet, please send an email
+ * to license@wds.vn so we can send you a copy immediately.
+ *
+ */
+
+?>
+	<header id="header">
+		<div class="wrapper">
+			<div id="logo"><a href="index.html"><img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/logo.wds.vn.png" alt="WDS.VN Logo. WDS GROUP Logo." /></a></div>
+			<div id="header_right">
+				<nav id="nav_top">
+					<ul id="nav_right" style="display: inline;">    
+						<li><a href="usercp.html">Welcome ThuyDX</a></li>
+						<li><a href="logout.html">Logout</a></li>
+						<!--  // Active if user dont login or guest
+						<li><a href="register.html">JOIN NOW</a></li>                                        
+						-->
+						<li class="noslash"><a href="usercp.html">Profiles</a></li>   
+						<li class="nobg"><img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/navbar/topnav_right.jpg" alt=" top navbar" />							
+					</ul><!-- End H-Nav-Right -->						
+					<ul id="nav_left" style="display: inline;">
+						<li class="nobg"><img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/navbar/topnav_left.jpg" alt=" top navbar" />
+						<li><a href="about.html">ABOUT US</a></li>
+						<li><a href="contact.html">CONTACT US</a></li>
+						<li class="noslash"><a href="help.html">FAQ</a></li>
+						<li class="nobg"><img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/navbar/topnav_midle.jpg" alt=" top navbar" />
+					</ul> <!-- End H-Nav-Left -->
+
+				</nav> <!-- End Top Navbar -->
+				<div class="clear"></div>
+				<form action="search.html" method="get">
+				
+				<section id="nav_search" role="search">	
+					<input type="text" name="search" value="search keyword" />
+					<input id="search_btn" name="search_btn" type="image" src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/search_btn.png" />
+				</section> 
+				<img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/icons/search.png" alt="search" style="float:right;" />
+				</form> <!-- End Search Form -->
+			</div> <!-- End header right -->
+		
+			<div class="clear"></div>
+			
+			<nav id="mainMenu">
+				<img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/navbar/navbar_left.png" alt="navleft" style="float:left;"/>
+				<!--
+				<ul class="topNav">
+					<li></li>
+				</ul>-->
+					<div class="myMenu">            
+					  <!-- start horizontal menu -->            
+					  <ul class="topNav">
+						<li class="rootVoice {menu: 'nav_home'}" ><?php echo $this->translate("Home"); ?></li>
+						<li class="rootVoice {menu: 'nav_product'}" ><?php echo $this->translate("Product"); ?></li>
+						<li class="rootVoice {menu: 'nav_service'}" ><?php echo $this->translate("Service"); ?></li>
+						<li class="rootVoice {menu: 'nav_about'}" ><a href="#"><?php echo $this->translate("About Us"); ?></a></li>
+						<li class="rootVoice {menu: 'nav_contact'}" ><?php echo $this->translate("Contact"); ?></li>
+					  </ul>            
+					  <!-- end horizontal menu -->            
+					</div>                  
+				<img src="<?php echo $this->baseUrl('skins/default/front/images'); ?>/navbar/navbar_right.png" alt="navleft" style="float:left;"/>
+			</nav> <!-- End navbar -->
+			<!-- menus -->
+			<div id="nav_home" class="mbmenu boxMenu">
+			<table style="border:0;" >
+			  <tr>
+				<td>
+				  <a href="#">Home</a>
+				  <a href="#">News</a>
+				  <a href="#">Join Us</a>
+				  <a href="#">Subscription</a>
+				</td>
+				<td>
+				  <a href="#">Home</a>
+				  <a href="#">Details</a>
+				  <a href="#">About Bugs Voice</a>
+				  <a href="#">Sign up</a>
+				</td>
+				<td>
+				  <a href="#">Home</a>
+				  <a href="#">Mission</a>
+				  <a href="#">Interview yourself</a>
+				  <a href="#">Get interviewed</a>
+				</td>
+			  </tr>
+			</table>
+			</div>
+			<!-- end menus -->
+			<!-- menus -->
+			<div id="nav_product" class="mbmenu boxMenu">
+			<table style="border:0;" >
+			  <tr>
+				<td>
+				  <a href="#">Home</a>
+				  <a href="#">News</a>
+				  <a href="#">Join Us</a>
+				  <a href="#">Subscription</a>
+				</td>
+				<td>
+				  <a href="#">Home</a>
+				  <a href="#">Details</a>
+				  <a href="#">About Bugs Voice</a>
+				  <a href="#">Sign up</a>
+				</td>
+				<td>
+				  <a href="#">Home</a>
+				  <a href="#">Mission</a>
+				  <a href="#">Interview yourself</a>
+				  <a href="#">Get interviewed</a>
+				</td>
+			  </tr>
+			</table>
+			</div>
+
+			<!-- end menus -->
+
+			<!-- menus -->
+			<div id="nav_service" class="mbmenu boxMenu">
+			<table style="border:0;" >
+			  <tr>
+				<td>
+				  <a href="#">Home</a>
+				  <a href="#">News</a>
+				  <a href="#">Join Us</a>
+				  <a href="#">Subscription</a>
+				</td>
+				<td>
+				  <a href="#">Home</a>
+				  <a href="#">Details</a>
+				  <a href="#">About Bugs Voice</a>
+				  <a href="#">Sign up</a>
+				</td>
+				<td>
+				  <a href="#">Home</a>
+				  <a href="#">Mission</a>
+				  <a href="#">Interview yourself</a>
+				  <a href="#">Get interviewed</a>
+				</td>
+			  </tr>
+			</table>
+			</div>
+
+			<!-- end menus -->
+			<nav id="nav-breadcrumb">
+				<h2>WDS CMS >></h2>  
+			</nav> <!-- End breadcrumb -->
+
+		</div> <!-- End header wrapper -->
+	</header> <!-- End header  -->
+	<div class="clearfix"></div>

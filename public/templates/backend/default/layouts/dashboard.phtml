@@ -1,0 +1,171 @@
+<?php
+
+//$this->css()->prepend('styles.css');
+
+//$this->js()->append('compiled.js');
+?>
+		
+<!DOCTYPE html>
+<!--[if IE 7 ]>   <html lang="en" class="ie7 lte8"> <![endif]--> 
+<!--[if IE 8 ]>   <html lang="en" class="ie8 lte8"> <![endif]--> 
+<!--[if IE 9 ]>   <html lang="en" class="ie9"> <![endif]--> 
+<!--[if gt IE 9]> <html lang="en"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+
+<head>
+<meta charset="utf-8">
+<!--[if lt IE 9 ]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+
+<!-- iPad Settings -->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" /> 
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0">
+<!-- iPad End -->
+
+<title>WDS CMS Admin Control Panel</title>
+
+<link rel="shortcut icon" href="favicon.html">
+<?php 
+    echo $this->css();
+    echo $this->js();
+?>
+
+<!-- STYLESHEETS -->
+
+<link rel="stylesheet" media="screen" href="<?php echo $this->baseUrl('skins/default/admincp/css/reset.css')?>" />
+<link rel="stylesheet" media="screen" href="<?php echo $this->baseUrl('skins/default/admincp/css/grids.css')?>" />
+<link rel="stylesheet" media="screen" href="<?php echo $this->baseUrl('skins/default/admincp/css/style.css')?>" />
+<link rel="stylesheet" media="screen" href="<?php echo $this->baseUrl('skins/default/admincp/css/jquery.uniform.css')?>" />
+<link rel="stylesheet" media="screen" href="<?php echo $this->baseUrl('skins/default/admincp/themes/dark/style.css')?>" />
+
+<!-- jQplot CSS -->
+<link rel="stylesheet" media="screen" href="<?php echo $this->baseUrl('skins/default/admincp/css/jquery.jqplot.css')?>" />
+<!-- jQplot CSS END -->
+
+<!--[if lt IE 9]>
+<link rel="stylesheet" media="screen" href="<?php echo $this->baseUrl('skins/default/admincp/css/ie.css')?>" />
+<![endif]-->
+
+<style type = "text/css">
+    #loading-container {position: absolute; top:50%; left:50%;}
+    #loading-content {width:800px; text-align:center; margin-left: -400px; height:50px; margin-top:-25px; line-height: 50px;}
+    #loading-content {font-family: "Helvetica", "Arial", sans-serif; font-size: 18px; color: black; text-shadow: 0px 1px 0px white; }
+    #loading-graphic {margin-right: 0.2em; margin-bottom:-2px;}
+    #loading {background-color: #eeeeee; height:100%; width:100%; overflow:hidden; position: absolute; left: 0; top: 0; z-index: 99999;}
+</style>
+
+<!-- STYLESHEETS END -->
+
+<!--[if lt IE 9]>
+<script src="<?php echo $this->baseUrl('skins/default/admincp/js/html5.js')?>"></script>
+<script type="text/javascript" src="<?php echo $this->baseUrl('skins/default/admincp/js/selectivizr.js')?>"></script>
+<![endif]-->
+
+
+    
+    <!-- MAIN JAVASCRIPTS -->
+    <script src="<?php echo $this->baseUrl('skins/default/admincp/js/jquery.js')?>"></script>
+    <script>window.jQuery || document.write("<script src='<?php echo $this->baseUrl('skins/default/admincp/js/jquery.min.js')?>'>\x3C/script>")</script>
+    <script type="text/javascript" src="<?php echo $this->baseUrl('skins/default/admincp/js/jquery.tools.min.js')?>"></script>
+    <script type="text/javascript" src="<?php echo $this->baseUrl('skins/default/admincp/js/jquery.uniform.min.js')?>"></script>
+    <script type="text/javascript" src="<?php echo $this->baseUrl('skins/default/admincp/js/jquery.isotope.min.js')?>"></script>
+    
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="<?php echo $this->baseUrl('skins/default/admincp/js/PIE.js')?>"></script>
+    <script type="text/javascript" src="<?php echo $this->baseUrl('skins/default/admincp/js/ie.js')?>"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="<?php echo $this->baseUrl('skins/default/admincp/js/global.js')?>"></script>
+    <!-- MAIN JAVASCRIPTS END -->
+
+    <!-- LOADING SCRIPT -->
+    <script>
+    $(window).load(function(){
+        $("#loading").fadeOut(function(){
+            $(this).remove();
+            $('body').removeAttr('style');
+        });
+    });
+    </script>
+    <!-- LOADING SCRIPT -->
+    
+    <!-- jQplot SETUP -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="lib/jqplot/excanvas.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="<?php echo $this->baseUrl('skins/default/admincp/js/jquery.jqplot.js')?>"></script>
+    <script type="text/javascript" src="<?php echo $this->baseUrl('skins/default/admincp/js/plugins/jqplot.categoryAxisRenderer.js')?>"></script>
+    <script type="text/javascript" src="<?php echo $this->baseUrl('skins/default/admincp/js/plugins/jqplot.barRenderer.js')?>"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        var line1 = [1,4, 9, 16];
+        var line2 = [25, 12.5, 6.25, 3.125];
+        var line3 = [2, 7, 15, 30];
+        var plot2 = $.jqplot('chart2', [line1, line2, line3], {
+            show: true,
+            legend:{show:true, location:'ne', xoffset:0},
+            seriesDefaults:{
+                renderer:$.jqplot.BarRenderer, 
+                rendererOptions:{barPadding: 8, barMargin: 10, shadowDepth: 2}
+            },
+            series:[
+                {label:'Profits'}, 
+                {label:'Expenses'}, 
+                {label:'Sales'}
+            ],
+            axes:{
+                xaxis:{
+                    renderer:$.jqplot.CategoryAxisRenderer, 
+                    ticks:['1st Qtr', '2nd Qtr', '3rd Qtr', '4th Qtr']
+                }, 
+                yaxis:{min:0}
+            }
+        });
+    });
+    </script>
+    <!-- jQplot SETUP END -->
+</head>
+<body style="overflow: hidden;">
+    <div id="loading"> 
+
+        <script type = "text/javascript"> 
+            document.write("<div id='loading-container'><p id='loading-content'>" +
+                           "<img id='loading-graphic' width='16' height='16' src='<?php echo $this->baseUrl('skins/default/admincp/images/ajax-loader-big-000000.gif')?>' /> " +
+                           "Loading...</p></div>");
+        </script> 
+
+    </div> 
+
+    <div id="wrapper">
+        <header>
+            <h1><a href="http://wds.vn/"><img src="<?php echo $this->baseUrl('skins/default/admincp/images/logo.png')?>" alt="wds logo" style="margin: 5px 0px 0px 0px;" /> CMS Admin</a></h1>
+            <nav>
+                <?php echo $this->render('navigation.phtml'); ?>
+            </nav>
+        </header>
+        
+        <section>
+            <!-- Sidebar -->
+            <aside>
+                <?php echo $this->render('leftcolumn.phtml'); ?>
+            </aside>
+
+            <!-- Sidebar End -->
+
+            <section>
+                <?php echo $this->render('index.phtml'); ?>
+                <footer class="container_12 clearfix">
+					<?php echo $this->render('navigation.phtml'); ?>
+                </footer>
+            </section>
+
+            <!-- Main Section End -->
+        </section>
+    </div>
+	<?php echo $this->render('footer.phtml'); ?>
+</body>
+
+</html>		
+		
+		
+		

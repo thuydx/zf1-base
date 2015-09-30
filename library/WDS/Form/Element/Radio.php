@@ -1,0 +1,1 @@
+<?phpclass WDS_Form_Element_Radio extends Zend_Form_Element_Multi{    /**     * Use formRadio view helper by default     * @var string     */    public $helper = 'formRadio';    /**     * Load default decorators     *     * Disables "for" attribute of label if label decorator enabled.     *     * @return void     */}
